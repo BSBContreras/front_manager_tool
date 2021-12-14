@@ -354,8 +354,9 @@ const Constructor = () => {
   useEffect(() => {
     if(currentTask.id) {
       const loadPagesRoute = async (id) => {
-        const response = await api.post('/tasks/pages.php', { id: Number(id) });
+        const response = await api.post('/tasks/pages.php', { task_id: Number(id) });
         const { data } = response;
+        console.log(data.docs)
         if(data.status === 'success') {
           setSelectedsPages(data.docs)
         } else {
